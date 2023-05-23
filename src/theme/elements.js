@@ -1,40 +1,49 @@
 const linkDefault = {
-  cursor: 'pointer'
+  cursor: "pointer",
 };
 
 const buttonDefault = {
-  cursor: 'pointer'
+  cursor: "pointer",
 };
 
 const hyperlinkDefault = {
-  ...linkDefault
+  ...linkDefault,
 };
 
 const links = {
   hyperlink: {
     // small
-    ...hyperlinkDefault
+    ...hyperlinkDefault,
   },
   footer: {
-    ...linkDefault
+    ...linkDefault,
   },
   legal: {
-    ...linkDefault
+    ...linkDefault,
   },
   contact: {
-    ...linkDefault
-  }
+    ...linkDefault,
+  },
 };
 
 const buttons = {
   primary: {
-    ...buttonDefault
+    ...buttonDefault,
+    fontFamily: "body.normal",
+    fontSize: "1.3rem",
+    p: "1rem 2rem",
+    border: "none",
+    bg: "primary",
+    color: "white",
+    textTransform: "uppercase",
+    borderRadius: "card",
+    letterSpacing: "0.05em",
   },
   clear: {
     ...buttonDefault,
     p: 0,
-    bg: 'transparent'
-  }
+    bg: "transparent",
+  },
 };
 
 const cards = {};

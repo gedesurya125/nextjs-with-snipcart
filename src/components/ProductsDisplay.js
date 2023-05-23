@@ -4,30 +4,30 @@ import React from "react";
 import { Box, Paragraph, Button } from "@thepuzzlers/pieces";
 import { useProducts } from "@/shopify";
 import Image from "next/image";
+import { AddToCartButton, ProductProvider } from "@shopify/hydrogen-react";
 
-export const ProductsDisplay = () => {
-  const { data } = useProducts();
-
-  console.log("this is t5he product", data);
-
+export const ProductsDisplay = ({ products }) => {
   return (
     <Box
       className="__product-display"
       sx={{
-        gridColumn: ["1/13", "1/13", "1/25", "4/25", "6/25"],
+        gridColumn: ["1/13", "1/13", "1/25", "4/ span 16", "4/ span 16"],
         display: "flex",
         gap: "3rem",
         mt: "4rem",
       }}
     >
-      {data?.products?.nodes.map((product, index) => {
+      {products?.nodes.map((product, index) => {
         return <ProductCard product={product} key={index} />;
       })}
     </Box>
   );
 };
 
-const ProductCard = ({ product: { images, title } }) => {
+const ProductCard = ({ product }) => {
+  const { images, title, id, variants } = product;
+  console.log("this is the product id", id, variants);
+
   return (
     <Box
       sx={{
@@ -43,28 +43,45 @@ const ProductCard = ({ product: { images, title } }) => {
         alignItems: "center",
       }}
     >
-      <CardImage alt="product image" src={images.nodes[0].url} fill={true} />
-      <Paragraph
-        sx={{
-          textAlign: "center",
-          mt: "1rem",
-          fontFamily: "body.normal",
-          fontSize: [null, null, null, null, null, "1.8rem"],
-        }}
-      >
-        {title}
-      </Paragraph>
-      <Button
-        sx={{
-          bg: "black",
-          color: "white",
-          p: "1rem 2rem",
-          borderRadius: "10px",
-          mt: "2rem",
-        }}
-      >
-        Add to Card
-      </Button>
+      <ProductProvider data={product}>
+        <CardImage alt="product image" src={images.nodes[0].url} fill={true} />
+        <Paragraph
+          sx={{
+            textAlign: "center",
+            mt: "1rem",
+            fontFamily: "body.normal",
+            fontSize: [null, null, null, null, null, "1.8rem"],
+          }}
+        >
+          {title}
+        </Paragraph>
+        <Box
+          sx={{
+            mt: "3rem",
+            width: "100%",
+          }}
+        >
+          <Paragraph
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "body.normal",
+              fontSize: [
+                "1.6rem",
+                "1.6rem",
+                "1.6rem",
+                "1.6rem",
+                "1.6rem",
+                "1.6rem",
+              ],
+            }}
+          >
+            Variants
+          </Paragraph>
+          {variants?.nodes?.map((variant, index) => {
+            return <ProductVariant variant={variant} key={index} />;
+          })}
+        </Box>
+      </ProductProvider>
     </Box>
   );
 };
@@ -80,6 +97,48 @@ const CardImage = ({ src, alt, sx }) => {
       }}
     >
       <Image alt={alt} src={src} fill={true} objectFit="cover" />
+    </Box>
+  );
+};
+
+const ProductVariant = ({
+  variant: {
+    id,
+    title,
+    price: { amount, currencyCode },
+  },
+}) => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        mt: "1rem",
+        bg: "teal",
+        p: "1rem",
+        borderRadius: "card",
+      }}
+    >
+      <Box>
+        <Paragraph
+          sx={{
+            color: "white",
+          }}
+        >
+          {title}
+        </Paragraph>
+
+        <Paragraph
+          sx={{
+            color: "white",
+            mt: "0.5rem",
+          }}
+        >
+          <span>{currencyCode}</span>
+          <span>{amount}</span>
+        </Paragraph>
+      </Box>
+      <AddToCartButton variantId={id}>Add to cart</AddToCartButton>
     </Box>
   );
 };

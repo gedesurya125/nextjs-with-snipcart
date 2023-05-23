@@ -1,2 +1,3 @@
-export * from "./useShopData";
-export * from "./useProducts";
+export * from "./shopifyClient";
+export * from "./useShopifyQuery";
+export * from "./useShopifyQuery";
