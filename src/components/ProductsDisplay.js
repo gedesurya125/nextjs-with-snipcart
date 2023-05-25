@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
       sx={{
         width: "20rem",
         borderRadius: "12px",
-        height: "32rem",
+        // height: "auto,
         bg: "white",
         position: "relative",
         overflow: "hidden",
@@ -41,6 +41,7 @@ const ProductCard = ({ product }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        alignSelf: "start",
       }}
     >
       <ProductProvider data={product}>

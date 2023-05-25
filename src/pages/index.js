@@ -10,9 +10,9 @@ import { CartPreview } from "@/components/CartPreview";
 import { shopifyFetch } from "@/apollo/shopifyFetch";
 
 export default function Home({ shopifyData }) {
-  console.log("this is shopify data", shopifyData);
+  const { getStorefrontApiUrl } = useShop();
 
-  const { ge } = useShop();
+  console.log("this is shopify data", getStorefrontApiUrl());
 
   return (
     <>
@@ -33,8 +33,9 @@ export default function Home({ shopifyData }) {
 
 export async function getServerSideProps() {
   // A Storefront API query, defined in a separate file where you make queries.
+  //? language setting refer to https://shopify.dev/docs/api/storefront#directives
   const GRAPHQL_QUERY = `
-    query {
+    query products @inContext(language:DE) {
       shop {
         name
       }

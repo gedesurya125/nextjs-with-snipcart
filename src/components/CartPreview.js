@@ -14,8 +14,6 @@ import { CheckoutButton } from "./CheckoutButton";
 export const CartPreview = () => {
   const { cartFragment, cartCreate, lines, checkoutUrl } = useCart();
 
-  console.log("this is the card lines", checkoutUrl);
-
   return (
     <Box
       sx={{
