@@ -3,14 +3,10 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "theme-ui";
 import theme from "@/theme";
 import { CartProvider, ShopifyProvider } from "@shopify/hydrogen-react";
-// import { ApolloProvider } from "@apollo/client";
-// import { apolloClient } from "@/apollo/apolloClient";
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      {/* <ApolloProvider client={apolloClient}> */}
-
       <ShopifyProvider
         storeDomain={process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}
         storefrontToken={
@@ -31,7 +27,6 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </CartProvider>
       </ShopifyProvider>
-      {/* </ApolloProvider> */}
     </ThemeProvider>
   );
 }
