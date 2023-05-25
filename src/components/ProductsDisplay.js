@@ -2,9 +2,8 @@ import React from "react";
 
 // External Components
 import { Box, Paragraph, Button } from "@thepuzzlers/pieces";
-import { useProducts } from "@/shopify";
 import Image from "next/image";
-import { ProductProvider } from "@shopify/hydrogen-react";
+import { ProductProvider, useCart, useMoney } from "@shopify/hydrogen-react";
 import { AddToCartButton } from "./AddToCartButton";
 
 export const ProductsDisplay = ({ products }) => {
@@ -102,44 +101,54 @@ const CardImage = ({ src, alt, sx }) => {
   );
 };
 
-const ProductVariant = ({
-  variant: {
-    id,
-    title,
-    price: { amount, currencyCode },
-  },
-}) => {
+const ProductVariant = ({ variant: { id, title, price, image } }) => {
+  const displayedPrice = useMoney(price);
+
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        mt: "1rem",
-        bg: "teal",
-        p: "1rem",
+        border: "1px solid black",
         borderRadius: "card",
+        pt: "1rem",
+        mt: "2rem",
       }}
     >
-      <Box>
-        <Paragraph
-          sx={{
-            color: "white",
-          }}
-        >
-          {title}
-        </Paragraph>
+      <CardImage
+        src={image.url}
+        sx={{
+          mx: "auto",
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          mt: "1rem",
+          bg: "teal",
+          p: "1rem",
+          borderRadius: "card",
+        }}
+      >
+        <Box>
+          <Paragraph
+            sx={{
+              color: "white",
+            }}
+          >
+            {title}
+          </Paragraph>
 
-        <Paragraph
-          sx={{
-            color: "white",
-            mt: "0.5rem",
-          }}
-        >
-          <span>{currencyCode}</span>
-          <span>{amount}</span>
-        </Paragraph>
+          <Paragraph
+            sx={{
+              color: "white",
+              mt: "0.5rem",
+            }}
+          >
+            {`${displayedPrice.currencyNarrowSymbol}. ${displayedPrice.amount}`}
+          </Paragraph>
+        </Box>
+        <AddToCartButton variantId={id} />
       </Box>
-      <AddToCartButton variantId={id} />
     </Box>
   );
 };

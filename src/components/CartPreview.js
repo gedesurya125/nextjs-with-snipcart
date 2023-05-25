@@ -97,7 +97,9 @@ const LineText = ({ children, ...props }) => {
 const Money = ({ price }) => {
   const money = useMoney(price);
 
-  return <LineText as="span">{money.withoutTrailingZeros}</LineText>;
+  return (
+    <LineText as="span">{`${money.currencyNarrowSymbol}. ${money.amount}`}</LineText>
+  );
 };
 
 const LineQuantityAdjuster = () => {
