@@ -1,3 +1,4 @@
+// This function used in next js SSR
 export async function shopifyFetch({ query, variables }) {
   const endpoint = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
   const key = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
