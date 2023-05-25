@@ -17,8 +17,8 @@ export default function App({ Component, pageProps }) {
           process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
         }
         storefrontApiVersion={process.env.NEXT_PUBLIC_SHOPIFY_API_VERSION}
-        countryIsoCode="ID"
-        languageIsoCode="EN"
+        countryIsoCode="DE"
+        languageIsoCode="DE"
       >
         <CartProvider
           onLineAdd={() => {

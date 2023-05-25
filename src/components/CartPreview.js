@@ -9,7 +9,6 @@ import {
   useMoney,
   useShop,
 } from "@shopify/hydrogen-react";
-import { useShopifyQuery } from "@/shopify";
 import { CheckoutButton } from "./CheckoutButton";
 
 export const CartPreview = () => {

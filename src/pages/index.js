@@ -1,23 +1,18 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { useQuery, gql } from "@apollo/client";
-import { getAllProducts } from "@/apollo/shopifyFetch";
-import { getStorefrontApiUrl, getPrivateTokenHeaders } from "@/shopify";
 import { useShop } from "@shopify/hydrogen-react";
 
 // External Components
-import { Box, Section } from "@thepuzzlers/pieces";
+import { Section } from "@thepuzzlers/pieces";
 import { ProductsDisplay } from "@/components";
 import { NavigationBar } from "@/components/NavigationBar";
 import { CartPreview } from "@/components/CartPreview";
-
-const inter = Inter({ subsets: ["latin"] });
+import { shopifyFetch } from "@/apollo/shopifyFetch";
 
 export default function Home({ shopifyData }) {
   console.log("this is shopify data", shopifyData);
+
+  const { ge } = useShop();
 
   return (
     <>
@@ -73,16 +68,8 @@ export async function getServerSideProps() {
     }
   `;
 
-  console.log("this is the storefront api url", getStorefrontApiUrl());
-
-  const response = await fetch(getStorefrontApiUrl(), {
-    body: JSON.stringify({
-      // A Storefront API query
-      query: GRAPHQL_QUERY,
-    }),
-    // When possible, add the 'buyerIp' property.
-    headers: getPrivateTokenHeaders({ buyerIp: "..." }),
-    method: "POST",
+  const response = await shopifyFetch({
+    query: GRAPHQL_QUERY,
   });
 
   const shopifyData = await response.json();
