@@ -26,7 +26,6 @@ export const ProductsDisplay = ({ products }) => {
 
 const ProductCard = ({ product }) => {
   const { images, title, id, variants } = product;
-  console.log("this is the product id", id, variants);
 
   return (
     <Box
