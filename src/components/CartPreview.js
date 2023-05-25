@@ -11,6 +11,8 @@ import {
 } from "@shopify/hydrogen-react";
 import { CheckoutButton } from "./CheckoutButton";
 
+import { LineQuantityAdjustButton } from "./LineQuantityAdjustButton";
+
 export const CartPreview = () => {
   const { cartFragment, cartCreate, lines, checkoutUrl } = useCart();
 
@@ -47,6 +49,8 @@ const CartLine = ({ cartLine }) => {
 };
 
 const CartLineData = () => {
+  const { linesRemove, linesUpdate } = useCart();
+
   const {
     quantity,
     merchandise: { title, price },
@@ -70,6 +74,7 @@ const CartLineData = () => {
       <LineText>
         total: <Money price={totalAmount} />
       </LineText>
+      <LineQuantityAdjuster />
     </Box>
   );
 };
@@ -93,4 +98,34 @@ const Money = ({ price }) => {
   const money = useMoney(price);
 
   return <LineText as="span">{money.withoutTrailingZeros}</LineText>;
+};
+
+const LineQuantityAdjuster = () => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "right",
+        mt: "2rem",
+      }}
+    >
+      <LineQuantityAdjustButton
+        adjust="increase"
+        sx={{
+          variant: "buttons.primary",
+        }}
+      >
+        +
+      </LineQuantityAdjustButton>
+      <LineQuantityAdjustButton
+        adjust="decrease"
+        sx={{
+          ml: "1rem",
+          variant: "buttons.primary-danger",
+        }}
+      >
+        -
+      </LineQuantityAdjustButton>
+    </Box>
+  );
 };

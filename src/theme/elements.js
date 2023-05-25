@@ -39,6 +39,11 @@ const buttons = {
     borderRadius: "card",
     letterSpacing: "0.05em",
   },
+
+  "primary-danger": {
+    variant: "buttons.primary",
+    bg: "red",
+  },
   clear: {
     ...buttonDefault,
     p: 0,
