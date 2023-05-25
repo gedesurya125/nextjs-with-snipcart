@@ -44,6 +44,15 @@ const buttons = {
     variant: "buttons.primary",
     bg: "red",
   },
+  "primary-small": {
+    variant: "buttons.primary",
+    fontSize: "0.8rem",
+    p: "0.2rem 0.8rem",
+  },
+  "primary-small-danger": {
+    variant: "buttons.primary-small",
+    bg: "red",
+  },
   clear: {
     ...buttonDefault,
     p: 0,

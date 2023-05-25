@@ -4,7 +4,8 @@ import React from "react";
 import { Box, Paragraph, Button } from "@thepuzzlers/pieces";
 import { useProducts } from "@/shopify";
 import Image from "next/image";
-import { AddToCartButton, ProductProvider } from "@shopify/hydrogen-react";
+import { ProductProvider } from "@shopify/hydrogen-react";
+import { AddToCartButton } from "./AddToCartButton";
 
 export const ProductsDisplay = ({ products }) => {
   return (
@@ -138,7 +139,7 @@ const ProductVariant = ({
           <span>{amount}</span>
         </Paragraph>
       </Box>
-      <AddToCartButton variantId={id}>Add to cart</AddToCartButton>
+      <AddToCartButton variantId={id} />
     </Box>
   );
 };
