@@ -9,7 +9,7 @@ const TranslatedLink = ({ href, children, sx, ...props }) => {
   // Get translated route for non-default locales
   const translatedPath = pathTranslations[locale]?.[href];
   // Set `as` prop to change displayed URL in browser
-  const as = translatedPath ? `/${locale}/${translatedPath}` : undefined;
+  const as = translatedPath ? `/${locale}${translatedPath}` : undefined;
 
   return (
     <Link href={href} as={as} sx={sx} {...props}>

@@ -26,11 +26,18 @@ export default function Home({ shopifyData }) {
         <TranslatedLink
           href="/"
           sx={{
-            gridColumn: "1/ span 3",
             variant: "buttons.secondary",
           }}
         >
           Back to Home
+        </TranslatedLink>
+        <TranslatedLink
+          href="/legal-page"
+          sx={{
+            variant: "buttons.secondary",
+          }}
+        >
+          Go To Legal Page
         </TranslatedLink>
       </Section>
     </>

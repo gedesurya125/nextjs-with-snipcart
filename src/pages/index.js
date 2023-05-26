@@ -52,6 +52,14 @@ export default function Home({ shopifyData }) {
           </Link>
 
           <LanguageSwitchLinkGroup />
+          <TranslatedLink
+            href="/legal-page"
+            sx={{
+              variant: "buttons.secondary",
+            }}
+          >
+            Go To Legal Page
+          </TranslatedLink>
         </Box>
       </Section>
     </>
