@@ -4,10 +4,14 @@ import { useShop } from "@shopify/hydrogen-react";
 
 // External Components
 import { Section } from "@thepuzzlers/pieces";
-import { ProductsDisplay } from "@/components";
+import { LanguageSwitchLink, ProductsDisplay } from "@/components";
 import { NavigationBar } from "@/components/NavigationBar";
 import { CartPreview } from "@/components/CartPreview";
 import { shopifyFetch } from "@/apollo/shopifyFetch";
+
+import Link from "next/link";
+import TranslatedLink from "@/components/TranslatedLink";
+import { LanguageSwitchLinkGroup } from "@/components/LanguageSwitchLinkGroup";
 
 export default function Home({ shopifyData }) {
   const { getStorefrontApiUrl } = useShop();
@@ -26,14 +30,16 @@ export default function Home({ shopifyData }) {
       <Section as="main">
         <ProductsDisplay products={shopifyData?.data?.products} />
         <CartPreview />
+        <TranslatedLink href="/blog">Go to BLOG</TranslatedLink>
+        <Link href="/blog">Original Blog Link</Link>
+
+        <LanguageSwitchLinkGroup />
       </Section>
     </>
   );
 }
 
 export async function getServerSideProps({ locales, locale }) {
-  console.log("this is the conttex", locale, locales);
-
   // A Storefront API query, defined in a separate file where you make queries.
   //? language setting refer to https://shopify.dev/docs/api/storefront#directives
   const GRAPHQL_QUERY = `

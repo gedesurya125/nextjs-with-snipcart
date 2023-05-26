@@ -2,11 +2,6 @@ import { getStorefrontApiUrl, getPrivateTokenHeaders } from "@/shopify";
 
 // This function used in next js SSR
 export async function shopifyFetch({ query, variables }) {
-  const endpoint = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
-  const key = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-
-  console.log("this is the api url", getStorefrontApiUrl());
-
   try {
     const result = await fetch(`${getStorefrontApiUrl()}`, {
       method: "POST",

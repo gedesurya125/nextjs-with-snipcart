@@ -5,8 +5,9 @@ import Head from "next/head";
 import { Section, Heading } from "@thepuzzlers/pieces";
 import { ProductsDisplay } from "@/components";
 import { NavigationBar } from "@/components/NavigationBar";
-import { CartPreview } from "@/components/CartPreview";
 import { shopifyFetch } from "@/apollo/shopifyFetch";
+import { LanguageSwitchLinkGroup } from "@/components/LanguageSwitchLinkGroup";
+import TranslatedLink from "@/components/TranslatedLink";
 
 export default function Home({ shopifyData }) {
   return (
@@ -21,14 +22,21 @@ export default function Home({ shopifyData }) {
       <Section as="main">
         <Heading>BLOG</Heading>
         <ProductsDisplay products={shopifyData?.data?.products} />
+        <LanguageSwitchLinkGroup />
+        <TranslatedLink
+          href="/"
+          sx={{
+            gridColumn: "1/ span 3",
+          }}
+        >
+          Back to Home
+        </TranslatedLink>
       </Section>
     </>
   );
 }
 
 export async function getServerSideProps({ locales, locale }) {
-  console.log("this is the conttex", locale, locales);
-
   // A Storefront API query, defined in a separate file where you make queries.
   //? language setting refer to https://shopify.dev/docs/api/storefront#directives
   const GRAPHQL_QUERY = `

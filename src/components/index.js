@@ -4,3 +4,5 @@ export * from "./AddCustomerForm";
 export * from "./CheckoutButton";
 export * from "./LineQuantityAdjustButton";
 export * from "./AddToCartButton";
+export * from "./TranslatedLink";
+export * from "./LanguageSwitchLink";
