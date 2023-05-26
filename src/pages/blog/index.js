@@ -27,6 +27,7 @@ export default function Home({ shopifyData }) {
           href="/"
           sx={{
             gridColumn: "1/ span 3",
+            variant: "buttons.secondary",
           }}
         >
           Back to Home

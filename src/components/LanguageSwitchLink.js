@@ -11,5 +11,14 @@ export const LanguageSwitchLink = ({ targetLocale, children }) => {
     return `/${targetLocale}${pathname}`;
   };
 
-  return <Link href={getHref()}>{children}</Link>;
+  return (
+    <Link
+      href={getHref()}
+      sx={{
+        variant: "buttons.secondary",
+      }}
+    >
+      {children}
+    </Link>
+  );
 };

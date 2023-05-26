@@ -53,6 +53,17 @@ const buttons = {
     variant: "buttons.primary-small",
     bg: "red",
   },
+  secondary: {
+    textDecoration: "none",
+    width: "max-content",
+    whiteSpace: "nowrap",
+    border: "1px solid black",
+    p: "0.5rem 1rem",
+    ":hover": {
+      bg: "primary",
+      color: "white",
+    },
+  },
   clear: {
     ...buttonDefault,
     p: 0,

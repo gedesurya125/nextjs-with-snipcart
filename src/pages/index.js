@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useShop } from "@shopify/hydrogen-react";
 
 // External Components
-import { Section } from "@thepuzzlers/pieces";
+import { Section, Box } from "@thepuzzlers/pieces";
 import { LanguageSwitchLink, ProductsDisplay } from "@/components";
 import { NavigationBar } from "@/components/NavigationBar";
 import { CartPreview } from "@/components/CartPreview";
@@ -30,10 +30,29 @@ export default function Home({ shopifyData }) {
       <Section as="main">
         <ProductsDisplay products={shopifyData?.data?.products} />
         <CartPreview />
-        <TranslatedLink href="/blog">Go to BLOG</TranslatedLink>
-        <Link href="/blog">Original Blog Link</Link>
+        <Box
+          sx={{
+            gridColumn: "1/ span 10",
+            display: "flex",
+            alignSelf: "start",
+            gap: "2rem",
+            my: "3rem",
+          }}
+        >
+          <TranslatedLink
+            href="/blog"
+            sx={{
+              variant: "buttons.secondary",
+            }}
+          >
+            Go to BLOG
+          </TranslatedLink>
+          <Link href="/blog" sx={{}}>
+            Default Next Link to Blog
+          </Link>
 
-        <LanguageSwitchLinkGroup />
+          <LanguageSwitchLinkGroup />
+        </Box>
       </Section>
     </>
   );

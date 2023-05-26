@@ -9,6 +9,8 @@ export const LanguageSwitchLinkGroup = () => {
       sx={{
         display: "flex",
         gap: "3rem",
+        gridColumnEnd: "span 4",
+        alignSelf: "start",
       }}
     >
       <LanguageSwitchLink targetLocale="de">Switch to De</LanguageSwitchLink>
