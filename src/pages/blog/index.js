@@ -59,6 +59,10 @@ export async function getServerSideProps({ locales, locale }) {
                 name
                 value
               }
+              image {
+                altText
+                url
+              }
             }
           }
         }

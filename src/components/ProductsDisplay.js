@@ -114,7 +114,7 @@ const ProductVariant = ({ variant: { id, title, price, image } }) => {
       }}
     >
       <CardImage
-        src={image.url}
+        src={image?.url}
         sx={{
           mx: "auto",
         }}
