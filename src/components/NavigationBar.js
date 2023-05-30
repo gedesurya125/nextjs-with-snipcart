@@ -1,7 +1,10 @@
 import React from "react";
 
+import Link from "next/link";
+
 // External Components
 import { Section, Heading, Box, Paragraph } from "@thepuzzlers/pieces";
+import { ThemedLink } from "./ThemedLink";
 
 export const NavigationBar = ({}) => {
   return (
@@ -21,8 +24,26 @@ export const NavigationBar = ({}) => {
           alignItems: "center",
         }}
       >
-        <Heading>Shop</Heading>
+        <Logo />
       </Box>
     </Section>
   );
 };
+
+const Logo = () => {
+  return (
+    <ThemedLink
+      href="/"
+      sx={{
+        textDecoration: "none",
+        color: "black",
+        fontSize: "2rem",
+        fontFamily: "primary.normal",
+      }}
+    >
+      Shop
+    </ThemedLink>
+  );
+};
+
+const NavigationLink = (second) => {};
