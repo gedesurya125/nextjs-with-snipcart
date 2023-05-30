@@ -1,3 +1,4 @@
+import { Footer } from "@/components";
 import { NavigationBar } from "@/components/NavigationBar";
 import React from "react";
 
@@ -6,6 +7,7 @@ export const MainLayout = ({ children }) => {
     <>
       <NavigationBar />
       {children}
+      <Footer />
     </>
   );
 };
