@@ -11,7 +11,6 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "@emotion/react": "^11.11.0",
-    "@shopify/hydrogen-react": "^2023.4.0",
     "@thepuzzlers/pieces": "^0.1.1",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",

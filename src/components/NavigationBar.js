@@ -1,13 +1,9 @@
 import React from "react";
 
-import { useShop } from "@shopify/hydrogen-react";
-
 // External Components
 import { Section, Heading, Box, Paragraph } from "@thepuzzlers/pieces";
 
-export const NavigationBar = ({ shopData }) => {
-  const shop = useShop();
-
+export const NavigationBar = ({}) => {
   return (
     <Section
       as="nav"
@@ -25,10 +21,7 @@ export const NavigationBar = ({ shopData }) => {
           alignItems: "center",
         }}
       >
-        <Heading>{shopData?.data?.shop?.name} Shop</Heading>
-        <Paragraph>{shop?.storeDomain}</Paragraph>
-        <Paragraph>{shop?.storefrontToken}</Paragraph>
-        <Paragraph>{shop?.storefrontApiVersion}</Paragraph>
+        <Heading>Shop</Heading>
       </Box>
     </Section>
   );
