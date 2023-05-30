@@ -40,11 +40,11 @@ export const Product = ({
       >
         {price}
       </Paragraph>
-      <button
+      <Button
         className="snipcart-add-item"
-        // sx={{
-        //   mt: "2rem",
-        // }}
+        sx={{
+          mt: "2rem",
+        }}
         data-item-id={id}
         data-item-name={name}
         data-item-price={price}
@@ -53,7 +53,7 @@ export const Product = ({
         data-item-image={image.src.src}
       >
         Add to cart
-      </button>
+      </Button>
     </Box>
   );
 };
